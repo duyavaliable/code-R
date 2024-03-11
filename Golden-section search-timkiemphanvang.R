@@ -1,9 +1,8 @@
 goldensection = function(f, a,b, tol){
   gr = (sqrt(5) - 1)/2
   
-  d = gr*(b-a)
-  x1 = a + d
-  x2 = b -d
+  x1 = b - gr*abs(b - a) #a.star
+  x2 = x1 + gr*abs(b-x1) #b.star
   
   #gan ham
   f1 = f(x1)
@@ -12,23 +11,17 @@ goldensection = function(f, a,b, tol){
   #khoi tao vong lap
   while (abs(b-a) > tol){
     if (f1 > f2){
-      b =x1 #x1 becomes new b
+      a = x1 #x1 becomes new b
       x1 = x2 #x2 becomes new x1
-      f1 = f2
-      x2 = b -d
-      f2 = f(x2)
+      x2 = a + gr*abs(b-a)
     }else {
-      a = x2
-      f1 = f2
+      b = x2
       x2 = x1
-      x1 = a + d
-      f2 = f(x1)
+      x1 = b - gr*abs(b-a)
     }
-    d = gr*(b-a)
   }
   return ((a+b)/2)
 }
 f = function(x) {x*x - 6*x + 15}
-result = goldensection(f, a= 0, b = 6, tol = 1e-16)
+result = goldensection(f, a= 0, b = 4, tol = 1e-100)
 print(result)
-
