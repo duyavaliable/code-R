@@ -14,7 +14,12 @@ mynewton <- function(f, fp, x, tol = 0.001 , m = 100){# f la ham so ban dau,
   }
   return(x)
 }
-f <- function(x) {cos(x) - x}
-fp <- function(x) {-sin(x) - 1}
+f <- function(x) {x^2 - 5*x +1}
+fp <- function(x) {2*x - 5}
 x <- 1
-mynewton(f, fp, x)
+result <- mynewton(f, fp, x)
+print(result)
+
+#bieu do the hien diem
+curve(f, from = 0, to = 2 * pi,  ylab = "f'(x)", xlab = "x")
+points(result, f(result), col = "red", pch = 19)

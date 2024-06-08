@@ -42,5 +42,5 @@ print(root)
 #plot(out1[[1]], log(out1[[2]]), type = 'o')
 #plot(out1[[1]], out1[[2]], type = 'o')
 curve(sin(x)- x/2, from = pi/2, to = pi)
-
+points(root, f(root), col = "red", pch = 19)
 

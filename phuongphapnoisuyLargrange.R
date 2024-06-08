@@ -5,7 +5,7 @@ LargCoef <- function(xi,x,j)
   Lj <- 1;
   for (k in 1 : N){
     if (j != k){
-      Lj <-  Lj*(x-xi[k]/(xi[j]-xi[k]))
+      Lj <-  Lj* (x-xi[k]) / (xi[j]-xi[k]) 
     }
   }
   return(Lj)
@@ -19,9 +19,13 @@ LargInter <- function (xi, Fi,x){
   }
   return(P)
 }
-xi <- 4 :7
-Fi <- c(-0.0660433280, -0.3275791376, -0.2766838581, - 0.0046828235)
+xi <-  -1 : 9
+Fi <- c(2.2177, 0.954331, 0.176641, -1.83642,-1.99559,-2.90529,-3.45014,-4.24675,-5.60628,-6.89665,-7.88336) #Fi = y tuc vi du ve 4 diem khi thay 
+#vao ham ra ket qua 
 plot(xi, Fi, col = "red")
-x <- seq(min(xi), max(xi), by = 0.1)
+x <- seq(min(xi), max(xi), by = 1)
 y <- LargInter(xi, Fi, x)
+print(y) #la khi minh thay x chay tu 0 den 3 co khoang cach la 0.1 o moi diem 
+points(x,y)
 lines(x,y)
+

@@ -11,7 +11,7 @@ myBiset <- function(f, a, b, tol = 1e-15, m = 100)
   
   while (err > tol){ 
     iter <- iter + 1 
-    err <- abs(b -a)
+    err <- abs(b -a) #tinh giua tren do lon khoang cach b va a 
     Iters[iter] = iter;
     Errs[iter] = err;
     if (iter > m){
@@ -35,7 +35,11 @@ myBiset <- function(f, a, b, tol = 1e-15, m = 100)
   out <- list(Iters, Errs)
   return(out)
 }
+
+#ve bieu do cac ket qua sai so da duoc luu
 myBiset(function(x){cos(x)- x},0,1,tol = 1e-9)-> out1
+
+
 plot(out1[[1]], log(out1[[2]]), type = 'o')#do thi cua sai so tuyet doi
 plot(out1[[1]], out1[[2]], type = 'o')
 
@@ -44,8 +48,8 @@ myNewtonRaphson <- function(f, fp, x, tol = 1e-15, m = 100)
 {
   iter <- 0
   err <- 10*tol
-  Iters <- c()
-  AbsErrs <- c()
+  Iters <- c()#luu so lan lap 
+  AbsErrs <- c()#luu sai so tuyet doi 
   
   while (err > tol){ 
     iter <- iter + 1 
@@ -62,6 +66,7 @@ myNewtonRaphson <- function(f, fp, x, tol = 1e-15, m = 100)
   out <- list(Iters, AbsErrs)
   return(out)
 }
+#bieu do hoi tu 
 myNewtonRaphson(function(x){cos(x)- x}, function(x){-sin(x) - 1}, 0.5, tol = 1e-9)-> out2
 plot(out2[[1]], log(out2[[2]]), type = 'o')#????
 plot(out2[[1]], out2[[2]], type = 'o')

@@ -11,7 +11,8 @@ myBiset <- function(f, a, b, tol = 1e-15, m = 100)
   #trong dk vong lap while la cong thuc sai so tuyet doi
   #convergence <- c()
   
-#b3+ b4: thu hep khoang phan ly cho den khi no nho hon sai so 
+#b3+ b4: thu hep khoang phan ly cho den khi no nho hon sai so
+
   while (abs(b - a) > tol){#b-a la do lon cua khoang chua nghiem, neu b -a > tol tuc la 
   #khoang chua nghiem so vs sai so con lon va van can tim nghiem hay van can lap tiep
     iter <- iter + 1#sau moi lan lap inter tang len 
@@ -33,7 +34,7 @@ myBiset <- function(f, a, b, tol = 1e-15, m = 100)
       f.b <- ymid 
     }
 #luu tru gia tri cua a, b sau moi lan lap
-    #convergence <- c(convergence, abs(b-a))
+  #convergence <- c(convergence, abs(b-a))
   }
   root <- (a+ b)/2
   return (root)
@@ -48,13 +49,15 @@ f <- function(x) {
 root <- myBiset(f, pi/2, pi)
 
 # In giá trị của root
-print(root)
-curve(sin(x) - x/2, from  = pi/2, to = pi)
-curve(sin(x) - x/2)
-points(root$root, f(root$root), col = "red", pch = 19)
+print(root)#check xem ket qua dung khong 
+
+curve(sin(x) - x/2, from  = pi/2, to = pi) #do thi sinx co gioi han
+points(root, f(root), col = "red", pch = 19)
+curve(sin(x) - x/2)#do thi sinx  ko gioi han
+
 
 
 #bieu do phuong phap hoi tu ta dung convergence de luu tru gia tri cua a, b sau moi lan lap
 plot(root$convergence, type = "l", main ="Toc do hoi tu cua phuong phap chia doi",
      xlab = "so lan lap", ylab = "abs(b - a)")
-
+#khi muon bieu dien toc do hoi tu chuyen return(root) thanh return(list...)
